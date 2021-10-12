@@ -727,7 +727,7 @@
 				assigned-clock-parents = <&pmc PMC_TYPE_CORE PMC_UTMI>;
 				assigned-clock-rates = <40000000>;
 				bosch,mram-cfg = <0x0 0 0 64 0 0 32 32>;
-				status = "disabled";
+				status = "okay";
 			};
 
 			spi1: spi@fc000000 {
