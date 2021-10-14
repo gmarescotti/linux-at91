@@ -65,6 +65,18 @@
 	};
 };
 
+&can0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_can0_default>;
+	status = "okay";
+};
+
+&can1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_can1_default>;
+	status = "disabled";
+};
+
 &adc {
 	vddana-supply = <&vdd_3v3>;
 	vref-supply = <&vdd_3v3>;
@@ -78,18 +90,6 @@
 	status = "okay";
 
 	uart5: serial@200 {
-		compatible = "atmel,at91sam9260-usart";
-		reg = <0x200 0x200>;
-		interrupts = <19 IRQ_TYPE_LEVEL_HIGH 7>;
-		dmas = <&dma0
-			(AT91_XDMAC_DT_MEM_IF(0) | AT91_XDMAC_DT_PER_IF(1) |
-			 AT91_XDMAC_DT_PERID(11))>,
-		       <&dma0
-			(AT91_XDMAC_DT_MEM_IF(0) | AT91_XDMAC_DT_PER_IF(1) |
-			 AT91_XDMAC_DT_PERID(12))>;
-		dma-names = "tx", "rx";
-		clocks = <&pmc PMC_TYPE_PERIPHERAL 19>;
-		clock-names = "usart";
 		pinctrl-0 = <&pinctrl_flx0_default>;
 		pinctrl-names = "default";
 		atmel,use-dma-rx;
@@ -122,9 +122,22 @@
 	 * disable bias in order to be in the same
 	 * state when the pin is not muxed to the adc.
 	 */
+	
 	pinctrl_adc_default: adc_default {
 		pinmux = <PIN_PD25__GPIO>,
 			 <PIN_PD26__GPIO>;
+		bias-disable;
+	};
+
+	pinctrl_can0_default: can0_default {
+		pinmux = <PIN_PC1__CANTX0>,
+			 <PIN_PC2__CANRX0>;
+		bias-disable;
+	};
+
+	pinctrl_can1_default: can1_default {
+		pinmux = <PIN_PC26__CANTX1>,
+			 <PIN_PC27__CANRX1>;
 		bias-disable;
 	};
 
@@ -222,7 +235,6 @@
 
 	input@0 {
 		reg = <0>;
-		atmel,wakeup-type = "low";
 	};
 };
 
