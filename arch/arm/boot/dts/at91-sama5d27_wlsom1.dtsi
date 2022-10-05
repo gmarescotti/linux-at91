@@ -68,7 +68,7 @@
 	pinctrl-1 = <&pinctrl_i2c1_gpio>;
 	sda-gpios = <&pioA PIN_PD19 GPIO_ACTIVE_HIGH>;
 	scl-gpios = <&pioA PIN_PD20 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-	status = "okay";
+	status = "disabled";
 
 	mcp16502@5b {
 		compatible = "microchip,mcp16502";

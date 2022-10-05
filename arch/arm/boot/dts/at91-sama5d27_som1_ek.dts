@@ -34,7 +34,7 @@
 			atmel,vbus-gpio = <&pioA PIN_PD20 GPIO_ACTIVE_HIGH>;
 			pinctrl-names = "default";
 			pinctrl-0 = <&pinctrl_usba_vbus>;
-			status = "okay";
+			status = "disabled";
 		};
 
 		usb1: ohci@400000 {
@@ -45,7 +45,7 @@
 					  >;
 			pinctrl-names = "default";
 			pinctrl-0 = <&pinctrl_usb_default>;
-			status = "okay";
+			status = "disabled";
 		};
 
 		usb2: ehci@500000 {
